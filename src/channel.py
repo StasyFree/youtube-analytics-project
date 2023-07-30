@@ -24,3 +24,7 @@ class Channel:
         channel = self.youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
         print(json.dumps(channel, indent=2, ensure_ascii=False))
 
+    @staticmethod
+    def get_service():
+        return build('youtube', 'v3', developerKey=os.getenv('YT_API_KEY'))
+
