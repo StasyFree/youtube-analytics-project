@@ -15,6 +15,9 @@ class Video:
         self.like_count = video_response['items'][0]['statistics']['likeCount']
         self.comment_count = video_response['items'][0]['statistics']['commentCount']
 
+    def __repr__(self):
+        return self.title
+
 
 class PLVideo(Video):
 
