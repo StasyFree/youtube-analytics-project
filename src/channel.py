@@ -31,6 +31,9 @@ class Channel:
     def __gt__(self, other):
         return self.quantity_sub > other.quantity_sub
 
+    def __ge__(self, other):
+        return self.quantity_sub >= other.quantity_sub
+
     def print_info(self) -> None:
         """Выводит в консоль информацию python -m venv venvо канале."""
         channel = self.youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
