@@ -37,3 +37,12 @@ class PlayList:
             self.__total_duration += duration_video
         return self.__total_duration
 
+    def show_best_video(self):
+
+        for video in self.video_response['items']:
+            # YouTube video duration is in ISO 8601 format
+            like_count = video['statistics']['likeCount']
+            if int(like_count) > self.like_count:
+                self.best_video = 'https://youtu.be/' + video['id']
+        return self.best_video
+
