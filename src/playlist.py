@@ -1,5 +1,4 @@
 import os
-import json
 import isodate
 from googleapiclient.discovery import build
 from datetime import timedelta
@@ -33,16 +32,16 @@ class PlayList:
         for video in self.video_response['items']:
             # YouTube video duration is in ISO 8601 format
             iso_8601_duration = video['contentDetails']['duration']
-            duration_video = isodate.parse_duration(iso_8601_duration)
-            self.__total_duration += duration_video
+            duration = isodate.parse_duration(iso_8601_duration)
+            self.__total_duration += duration
+
         return self.__total_duration
 
     def show_best_video(self):
 
         for video in self.video_response['items']:
-            # YouTube video duration is in ISO 8601 format
             like_count = video['statistics']['likeCount']
-            if int(like_count) > self.like_count:
+            if self.like_count < int(like_count):
                 self.best_video = 'https://youtu.be/' + video['id']
-        return self.best_video
 
+        return self.best_video
